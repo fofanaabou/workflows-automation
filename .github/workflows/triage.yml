@@ -9,12 +9,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Label issue
+        env:
+          BODY: ${{ github.event.issue.body }}
         run: |
-          if echo "${{ github.event.issue.body }}" | grep -qi 'bug'; then
-                      echo "::add-labels::bug";
-                    elif echo "${{ github.event.issue.body }}" | grep -qi 'feature'; then
-                      echo "::add-labels::feature";
-                    else
-                      echo "Labeling issue as needs-triage";
-                      echo "::add-labels::needs-triage";
-                    fi
+          if (${{ contains($BODY, 'bug') }}) {
+            echo '::add-labels: bug';
+          } else if (${{ contains(BODY, 'feature')}} ) {
+            echo '::add-labels: feature';
+          } else {
+            echo 'Labeling issue as needs-triage';
+            echo '::add-labels: needs-triage';
+          }
