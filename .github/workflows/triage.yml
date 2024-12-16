@@ -10,11 +10,11 @@ jobs:
     steps:
       - name: Label issue
         run: |
-          if (contains(${{ github.event.issue.body }}, 'bug')) {
-            echo '::add-labels: bug';
-          } else if (contains(${{ github.event.issue.body }}, 'feature')) {
-            echo '::add-labels: feature';
-          } else {
-            echo 'Labeling issue as needs-triage';
-            echo '::add-labels: needs-triage';
-          }
+          if echo "${{ github.event.issue.body }}" | grep -qi 'bug'; then
+                      echo "::add-labels::bug";
+                    elif echo "${{ github.event.issue.body }}" | grep -qi 'feature'; then
+                      echo "::add-labels::feature";
+                    else
+                      echo "Labeling issue as needs-triage";
+                      echo "::add-labels::needs-triage";
+                    fi
