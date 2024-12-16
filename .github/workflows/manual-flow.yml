@@ -1,0 +1,35 @@
+name: manual flow
+on:
+  workflow_dispatch:
+    inputs:
+      homedrive:
+        description: 'The home drive on th machine'
+        required: true
+      logLevel:
+        description: 'Log level'
+        default: 'warning'
+        type: choice
+        options:
+          - info
+          - warning
+          - debug
+      tag:
+        description: Apply tag after successfull test run
+        required: true
+        type: boolean
+      environment:
+        description: Environment to run tests against
+        type: environment
+        required: true
+jobs:
+  manulflow:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello world"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: List files in the repository
+        run: |
+          echo "The repository ${{ github.repository }} contains the following files:"
+          tree
