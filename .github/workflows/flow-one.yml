@@ -1,0 +1,14 @@
+name: flow one
+on: push
+jobs:
+  firtstJob:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "Hello world"
+
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: List files in the repository
+        run: |
+          echo "The repository ${{ github.repository }} contains the following files:"
+          tree
