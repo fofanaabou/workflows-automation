@@ -5,7 +5,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello world"
-
+      - name: Get secret
+        run: echo ${{ secrets.DATA_SECRET }}
       - name: Checkout
         uses: actions/checkout@v4
       - name: List files in the repository

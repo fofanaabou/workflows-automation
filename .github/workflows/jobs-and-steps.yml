@@ -9,7 +9,7 @@ jobs:
         id: color-generator
         run: echo "SELECT_COLOR=green" >> "$GITHUB_OUTPUT"
       - name: Get color
-        run: echo "${{ steps.color-generator.outputs.SELECT_COLOR }}"
+        run: echo "${{ steps.color-generator.t.SELECT_COLOR }}"
 
   job_2:
     runs-on: ubuntu-latest
