@@ -5,6 +5,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: "echo Job: ${{ github.job }}"
+      - name: Set color
+        id: color-generator
+        run: echo "SELECT_COLOR=green" >> "$GITHUB_OUTPUT"
+      - name: Get color
+        run: echo "${{ steps.color-generator.outputs.SELECT_COLOR }}"
+
   job_2:
     runs-on: ubuntu-latest
     needs: job_1
