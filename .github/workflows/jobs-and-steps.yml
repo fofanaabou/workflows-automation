@@ -19,6 +19,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: [job_2, job_3]
     steps:
-      - run: |
-         "echo Job: ${{ github.job }}"
-          echo "::workflow-command parameter1={data},parameter2={data}::{command value}"
+      - run: "echo Job: ${{ github.job }}"
+      - name: command
+        run: echo "::workflow-command parameter1={data},parameter2={data}::{command value}"
