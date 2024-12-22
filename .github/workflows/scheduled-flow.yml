@@ -1,7 +1,7 @@
 name: scheduled workflow
 on:
   schedule:
-    - cron: '*/59 * * * *'
+    - cron: '*/59 23 * * *'
 jobs:
   presentation:
     runs-on: ubuntu-latest

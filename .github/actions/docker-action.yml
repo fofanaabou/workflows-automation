@@ -1,0 +1,20 @@
+name: docker action
+description: test action
+author: AFO SOFT
+inputs:
+  input-one:
+    description: check bool
+    require: false
+  input-two:
+    default: data-info
+    description: data information
+    require: false
+runs:
+  using: 'docker'
+  image: 'docker://ghcr.io/wulfland/container-demo:latest'
+  args:
+    - ${{ inputs.input-one }}
+    - ${{ inputs.input-two }}
+  env:
+    VARIABLE1: ${{ inputs.input-one }}
+    VARIABLE2: ${{ inputs.input-two }}

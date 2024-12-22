@@ -14,7 +14,7 @@ on:
           - warning
           - debug
       tag:
-        description: Apply tag after successfull test run
+        description: Apply tag after successfully test run
         required: true
         type: boolean
       environment:
@@ -26,7 +26,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo "Hello world"
-
       - name: Checkout
         uses: actions/checkout@v4
       - name: List files in the repository
