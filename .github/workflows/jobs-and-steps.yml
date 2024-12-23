@@ -21,9 +21,18 @@ jobs:
     needs: job_1
     steps:
       - run: "echo Job: ${{ github.job }}"
+  manual-approval:
+    name: Manual Approval
+    needs: [job_2, job_3]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Wait for Approval
+        uses: askui/manual-approval-action@v1
+        with:
+          approvers: 'team-lead@example.com,qa-manager@example.com'
   job_4:
     runs-on: ubuntu-latest
-    needs: [job_2, job_3]
+    needs: manual-approval
     environment:
       name: production
     steps:
